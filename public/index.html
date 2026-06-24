@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A+ Stocks</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A+ Stocks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-    <h1>A+ Stocks</h1>
-    <p>Application is running successfully.</p>
+  <div class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Premium S&P 500 Screener</p>
+        <h1>A+ Stocks</h1>
+        <p class="subtitle">Visual A+ setup cards with entry, stop, targets, volume, score, and R:R plan.</p>
+      </div>
+      <div class="hero-stats">
+        <div><b id="aPlusCount">0</b><span>A+ setups</span></div>
+        <div><b id="nearCount">0</b><span>near entry</span></div>
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="search-wrap"><span>⌕</span><input id="search" placeholder="Search ticker or sector..." /></div>
+      <select id="sectorFilter"><option value="all">All sectors</option></select>
+      <button class="chip active" data-filter="score">Score 80–100</button>
+      <button class="chip" data-filter="volume">Volume Spike</button>
+      <button class="chip" data-filter="breakout">Near Breakout</button>
+      <button class="chip" data-filter="rr">R:R &gt; 2:1</button>
+      <div class="view-toggle"><button id="gridBtn" class="active">Grid</button><button id="tableBtn">Table</button></div>
+      <button id="exportBtn" class="export">Export CSV</button>
+    </section>
+
+    <main>
+      <section id="gridView" class="grid"></section>
+      <section id="tableView" class="panel hidden">
+        <div class="panel-head"><h2>Master Table View</h2><p>Sortable trader watchlist with entry distance and risk/reward.</p></div>
+        <div class="table-wrap">
+          <table id="stocksTable">
+            <thead><tr>
+              <th data-sort="rank">Rank</th><th data-sort="ticker">Ticker</th><th data-sort="score">Score</th><th data-sort="price">Price</th><th data-sort="toEntry">% to Entry</th><th data-sort="entry">Entry</th><th>Stop</th><th>T1</th><th>T2</th><th data-sort="rr">R:R</th><th data-sort="volumeRank">Volume Rank</th><th>Sector</th><th>Status</th><th>Action</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/app.js"></script>
 </body>
 </html>
